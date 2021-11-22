@@ -7,6 +7,7 @@ import random
 import requests as requests
 
 address = 'http://169.56.76.12/api/message/'
+order_address = 'http://169.56.76.12/api/order/'
 order_total = 20
 order_delay = 0
 anomaly_mtbf = 2
@@ -119,7 +120,6 @@ if __name__ == "__main__":
             'sender': 0,
             'title': 'Process',
             'msg': json.dumps({
-                'order': order_list[tick],
                 'anomaly_0': 1 if tried[0] == anomalies[0] else 0,
                 'anomaly_2': 1 if tried[2] == anomalies[2] else 0
             })
@@ -138,5 +138,10 @@ if __name__ == "__main__":
         if 'alert' in result.keys():
             break
 
+        order_message = {
+            'item_type': order_list[tick],
+            'dest': random.randrange(3)
+        }
+        requests.post(order_address, data=order_message)
         tick += 1
 
