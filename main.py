@@ -90,7 +90,7 @@ if __name__ == "__main__":
                      'msg':
                          json.dumps({
                              "experiment_type": "SAS",
-                             "dm_type": "AD-RL"
+                             "dm_type": "AAAA"
                          })
                      }
     requests.post(address, data=start_message)
@@ -127,13 +127,13 @@ if __name__ == "__main__":
     while True:
         input()
 
-        if tick == anomalies[0]:
+        if tick == anomalies[0][0]:
             anomaly_0 = True
             anomalies[0].pop(0)
         else:
             anomaly_0 = False
 
-        if tick == anomalies[2]:
+        if tick == anomalies[2][0]:
             anomaly_2 = True
             anomalies[2].pop(0)
         else:
