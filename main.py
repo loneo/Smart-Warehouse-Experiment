@@ -156,10 +156,12 @@ if __name__ == "__main__":
         if 'alert' in result.keys():
             break
 
-        order_message = {
-            'item_type': order_list[tick],
-            'dest': random.randrange(3)
-        }
-        requests.post(order_address, data=order_message)
+        if tick < 20:
+            order_message = {
+                'item_type': order_list[tick],
+                'dest': random.randrange(3)
+            }
+            requests.post(order_address, data=order_message)
+
         tick += 1
 
