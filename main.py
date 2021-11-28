@@ -59,7 +59,7 @@ def generate_order_list(name=None):
 
 if __name__ == "__main__":
     experiment_name = datetime.datetime.now().strftime("%Y-%m-%d-%H-%M-%S")
-    order_list = generate_order_list()
+    order_list = generate_order_list(name=experiment_name)
     anomalies = generate_anomaly(is_real=True, name=experiment_name)
 
     # Import Orders and Anomalies
